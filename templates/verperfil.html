@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Viendo perfil</title>
+</head>
+<body img="ima/2.jpg" bgproperties="fixed">
+<center><h2>Perfil</h2></center>
+
+<center>
+<table border="8">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Documento</td>
+        <td>Genero</td>
+        <td>Telefono</td>
+        <td>Nacimiento</td>
+        <td>user</td>
+        {% if perms.matriculas.change_perfil %}
+        <td>Editar</td>
+        {% endif %}
+        {% if perms.matriculas.del_perfil %}
+        <td>Eliminar</td>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for Perfil in object_list %}
+        <tr>
+            <td>{{ Perfil.id }}</td>
+            <td>{{ Perfil.documento }}</td>
+            <td>{{ Perfil.genero }}</td>
+            <td>{{ Perfil.telefono }}</td>
+            <td>{{ Perfil.nacimiento }}</td>
+            <td>{{ Perfil.user }}</td>
+            {% if perms.matriculas.change_perfil %}
+            <td><input type="button" onclick="location.href='/editperfil/{{ Perfil.id }}'" value="Editar"></td>
+            {% endif %}
+            {% if perms.matriculas.del_perfil %}
+            <td><input type="button" onclick="location.href='/elimperfil/{{ Perfil.id }}'" value="Eliminar"></td>
+            {% endif %}
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</center>
+<center><input type="button" onclick="location.href='/insertarperfil'" value="Agregar Perfil" ></center>
+<center><input type="button" onclick="location.href='/logout'" value="cerrar sesion" ></center>
+</body>
+</html>

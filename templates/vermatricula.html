@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viendo Matricula</title>
+</head>
+<body>
+<center><h2>Matricula</h2></center>
+
+<center>
+<table border="8">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Rh</td>
+        <td>Estados</td>
+        <td>Fecha</td>
+        <td>Estudiante</td>
+        <td>user</td>
+        {% if perms.matriculas.change_matricula %}
+        <td>Editar</td>
+        {% endif %}
+        {% if perms.matriculas.del_matricula %}
+        <td>Eliminar</td>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for Matricula in object_list %}
+        <tr>
+            <td>{{ Matricula.id }}</td>
+            <td>{{ Matricula.rh }}</td>
+            <td>{{ Matricula.estados }}</td>
+            <td>{{ Matricula.fecha }}</td>
+            <td>{{ Matricula.estudiante }}</td>
+            <td>{{ Matricula.user }}</td>
+            {% if perms.matriculas.change_matricula %}
+            <td><input type="button" onclick="location.href='/editmatricula/{{ Matricula.id }}'" value="Editar"></td>
+            {% endif %}
+            {% if perms.matriculas.del_matricula %}
+            <td><input type="button" onclick="location.href='/elimmatricula/{{ Matricula.id }}'" value="Eliminar"></td>
+            {% endif %}
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</center>
+<center><input type="button" onclick="location.href='/insertarmatricula'" value="Agregar matricula" ></center>
+<center><input type="button" onclick="location.href='/logout'" value="cerrar sesion" ></center>
+</body>
+</html>

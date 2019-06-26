@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insertar Docente</title>
+</head>
+<body>
+<h2>Insertando Docente</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Guardar">
+    <input type="button" onclick="location.href='/verdocente'" value="Cancelar">
+</form>
+</body>
+</html>

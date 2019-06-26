@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar estudiante</title>
+</head>
+<body>
+<h2>Eliminando estudiante</h2>
+<form action=""  method="post">
+
+     {% csrf_token %}
+    <input type="submit" value="Eliminar">
+    <input type="button" onclick="location.href='/verestudiante'" value="Cancelar">
+</form>
+
+</body>
+</html>

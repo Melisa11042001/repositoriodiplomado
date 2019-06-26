@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viendo docente</title>
+</head>
+<body>
+<center><h2>Docente</h2></center>
+
+<center>
+<table border="8">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Profesion</td>
+        <td>user</td>
+        {% if perms.matriculas.change_docente %}
+        <td>Editar</td>
+        {% endif %}
+        {% if perms.matriculas.del_docente %}
+        <td>Eliminar</td>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for Docente in object_list %}
+        <tr>
+            <td>{{ Docente.id }}</td>
+            <td>{{ Docente.profesion }}</td>
+            <td>{{ Docente.user }}</td>
+            {% if perms.matriculas.change_docente %}
+            <td><input type="button" onclick="location.href='/editdocente/{{ Docente.id }}'" value="Editar"></td>
+            {% endif %}
+            {% if perms.matriculas.del_docente %}
+            <td><input type="button" onclick="location.href='/elimdocente/{{ Docente.id }}'" value="Eliminar"></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</center>
+<center><input type="button" onclick="location.href='/insertardocente'" value="Agregar Perfil" ></center>
+<center><input type="button" onclick="location.href='/logout'" value="cerrar sesion" ></center>
+</body>
+</html>

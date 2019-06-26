@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viendo estudiante</title>
+</head>
+<body>
+<center><h2>Estudiante</h2></center>
+
+<center>
+<table border="8">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Observador</td>
+        <td>user</td>
+        {% if perms.matriculas.change_estudiante %}
+        <td>Editar</td>
+        {% endif %}
+        {% if perms.matriculas.del_estudiante %}
+        <td>Eliminar</td>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for Estudiante in object_list %}
+        <tr>
+            <td>{{ Estudiante.id }}</td>
+            <td>{{ Estudiante.observador }}</td>
+            <td>{{ Estudiante.user }}</td>
+            {% if perms.matriculas.change_estudiante %}
+            <td><input type="button" onclick="location.href='/editestudiante/{{ Estudiante.id }}'" value="Editar"></td>
+            {% endif %}
+            {% if perms.matriculas.del_estudiante %}
+            <td><input type="button" onclick="location.href='/elimestudiante/{{ Estudiante.id }}'" value="Eliminar"></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</center>
+<center><input type="button" onclick="location.href='/insertarestudiante'" value="Agregar Estudiante" ></center>
+<center><input type="button" onclick="location.href='/logout'" value="cerrar sesion" ></center>
+</body>
+</html>
